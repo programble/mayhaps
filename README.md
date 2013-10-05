@@ -1,4 +1,4 @@
-# Mayhaps
+# Mayhaps [![Gem Version](https://badge.fury.io/rb/mayhaps.png)](http://badge.fury.io/rb/mayhaps)
 
 Mayhaps call Ruby methods.
 
