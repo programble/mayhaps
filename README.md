@@ -4,11 +4,29 @@ Mayhaps call Ruby methods.
 
 ## Usage
 
-FIXME: Explanation
+Mayhaps allows you to call methods on objects that may or may not be
+nil.
+
+First, install the gem or add it to your `Gemfile`:
+
+```ruby
+gem "mayhaps", "~> 0.1.0"
+```
+
+Next, require it. There are two choices for using Mayhaps:
+
+1. `require 'mayhaps'`: Provides the `mayhaps` and `mayhaps_chain`
+   methods.
+2. `require 'mayhaps/maybe'`: Provides the `maybe` and `maybe_chain`
+   methods as aliases for the above.
+
+For the following examples, `require 'mayhaps/maybe'` is used.
 
 ### Maybe
 
-FIXME: Explanation
+The `maybe` method allows you to call a method on an object that may or
+may not be nil. If the object is nil, then the result of calling the
+method will also be nil.
 
 ```ruby
 hash = {:foo => "foo"}
@@ -19,13 +37,32 @@ hash[:bar].maybe.upcase #=> nil
 
 ### Chaining
 
-FIXME: Explanation
+The `maybe_chain` method works similarly, except it allows you to chain
+method calls and requires you to call `end` in order to retrieve the
+result, which is either the result of the chain of method calls, or nil
+if any of the methods in the chain returned nil.
 
 ```ruby
 hash = {:foo => " foo "}
 
 hash[:foo].maybe_chain.strip.upcase.end #=> "FOO"
 hash[:bar].maybe_chain.strip.upcase.end #=> nil
+```
+
+### Examples
+
+```ruby
+# Without Mayhaps
+if customer && customer.order && customer.order.id == some_id
+  # Do something with customer
+end
+
+# With Mayhaps
+require 'mayhaps/maybe'
+
+if customer.maybe_chain.order.id.end == some_id
+  # Do something with customer
+end
 ```
 
 ## License
