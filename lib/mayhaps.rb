@@ -17,7 +17,7 @@ module Mayhaps
     end
 
     def method_missing(*args, &block)
-      @end ? Chain.new(@end.public_send(*args, &block)) : self
+      @end.nil? ? self : Chain.new(@end.public_send(*args, &block))
     end
   end
 end
