@@ -4,7 +4,29 @@ Mayhaps call Ruby methods.
 
 ## Usage
 
-FIXME
+FIXME: Explanation
+
+### Maybe
+
+FIXME: Explanation
+
+```ruby
+hash = {:foo => "foo"}
+
+hash[:foo].maybe.upcase #=> "FOO"
+hash[:bar].maybe.upcase #=> nil
+```
+
+### Chaining
+
+FIXME: Explanation
+
+```ruby
+hash = {:foo => " foo "}
+
+hash[:foo].maybe_chain.strip.upcase.end #=> "FOO"
+hash[:bar].maybe_chain.strip.upcase.end #=> nil
+```
 
 ## License
 
