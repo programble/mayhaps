@@ -1,8 +1,6 @@
 require 'singleton'
 
 module Mayhaps
-  VERSION = '0.1.0'
-
   class Nothing
     include Singleton
 
