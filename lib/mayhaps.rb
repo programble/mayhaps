@@ -23,17 +23,17 @@ module Mayhaps
 end
 
 class Object
-  def maybe
+  def mayhaps
     self
   end
 
-  def maybe_chain
+  def mayhaps_chain
     Mayhaps::Chain.new(self)
   end
 end
 
 class NilClass
-  def maybe
+  def mayhaps
     Mayhaps::Nothing.instance
   end
 end
