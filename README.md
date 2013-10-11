@@ -24,8 +24,8 @@ require 'mayhaps'
 Mayhaps adds a `maybe` method to all objects that allows you to call
 methods on the object regardless of whether or not it is nil. It does
 this by wrapping the object in a `Maybe` object, more specifically a
-`Nothing` object for nil or a `Just` object for anything else. In order
-to unwrap the value, use unary `+` on the `Maybe` object.
+`Nothing` object for nil or a `Just` object for anything else. To unwrap
+the value, use unary `+` on the `Maybe` object.
 
 #### Examples
 
@@ -72,7 +72,7 @@ Nothing === nil.maybe #=> true
 ```
 
 The methods that will be called on the `Maybe` object itself and not the
-wrapped object are as follows:
+wrapped object are:
 
 * `+@`
 * `method_missing`
