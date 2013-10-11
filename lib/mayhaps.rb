@@ -8,19 +8,11 @@ class Object
       Just.new(self)
     end
   end
-
-  def maybe?
-    false
-  end
 end
 
 module Maybe
   def maybe
     self
-  end
-
-  def maybe?
-    true
   end
 end
 
