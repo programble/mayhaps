@@ -1,39 +1,62 @@
 require 'singleton'
 
-module Mayhaps
-  class Nothing
-    include Singleton
-
-    def method_missing(*args)
-      nil
+class Object
+  def maybe
+    if nil?
+      Nothing.instance
+    else
+      Just.new(self)
     end
   end
 
-  class Chain
-    attr_reader :end
-
-    def initialize(obj)
-      @end = obj
-    end
-
-    def method_missing(*args, &block)
-      @end.nil? ? self : Chain.new(@end.public_send(*args, &block))
-    end
+  def maybe?
+    false
   end
 end
 
-class Object
-  def mayhaps
+module Maybe
+  def maybe
     self
   end
 
-  def mayhaps_chain
-    Mayhaps::Chain.new(self)
+  def maybe?
+    true
   end
 end
 
-class NilClass
-  def mayhaps
-    Mayhaps::Nothing.instance
+class Just < BasicObject
+  include ::Maybe
+
+  def initialize(obj)
+    ::Kernel.raise ::ArgumentError, 'object is nil' if obj.nil?
+    @value = obj
+  end
+
+  def +@
+    @value
+  end
+
+  def method_missing(*args, &block)
+    @value.public_send(*args, &block).maybe
+  end
+
+  def inspect
+    "#<Just #{@value.inspect}>"
+  end
+end
+
+class Nothing < BasicObject
+  include ::Maybe, ::Singleton
+
+  def +@
+    nil
+  end
+
+  def method_missing(*args)
+    self
+  end
+
+  def inspect
+    '#<Nothing>'
   end
 end
