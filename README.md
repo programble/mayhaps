@@ -91,7 +91,7 @@ wrapped object are:
 `_dump` is a method added by the `Singleton` module, which `Nothing`
 includes.
 
-The `maybe` method defined on `Maybe` objects simply returns `self`.
+The `maybe` method defined on `Maybe` allows for nested `Maybe` objects.
 
 The `maybe` method should be used to wrap objects in `Maybe` objects,
 but they can also be created directly. Since `Nothing` is a `Singleton`,

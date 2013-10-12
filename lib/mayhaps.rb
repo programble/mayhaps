@@ -12,7 +12,7 @@ end
 
 module Maybe
   def maybe
-    self
+    ::Just.new(self)
   end
 end
 
@@ -20,8 +20,11 @@ class Just < BasicObject
   include ::Maybe
 
   def initialize(obj)
-    ::Kernel.raise ::ArgumentError, 'object is nil' if obj.nil?
-    @value = obj
+    if ::Maybe === obj || !obj.nil?
+      @value = obj
+    else
+      ::Kernel.raise ::ArgumentError, 'object is nil'
+    end
   end
 
   def +@
