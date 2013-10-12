@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'mayhaps'
-  s.version     = '0.2.0'
+  s.version     = '0.3.0'
   s.license     = 'ISC'
   s.authors     = ['Curtis McEnroe']
   s.email       = ['programble@gmail.com']

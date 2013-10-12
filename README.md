@@ -10,7 +10,7 @@ nil.
 First, install the gem or add it to your `Gemfile`:
 
 ```ruby
-gem "mayhaps", "~> 0.2.0"
+gem "mayhaps", "~> 0.3.0"
 ```
 
 Next, require it:
